@@ -82,16 +82,15 @@ for i in range(len(detected_list)):
                 if brand_ID == brand_id:
                     if year in texts:
                         year_ID = year
-                    else:
-                        year_ID = ""
-
-                    if model_ID == model_id and brand_ID == brand_id and year_ID == year:
-                        ybm_ID = match_irregular1.loc[j, 'ybm_id']
                         yb_ID = match_irregular1.loc[j, 'yb_id']
                     else:
-                        ybm_ID = ""
+                        year_ID = ""
                         yb_ID = ""
-
+                    if model_ID == model_id and brand_ID == brand_id and year_ID == year:
+                        ybm_ID = match_irregular1.loc[j, 'ybm_id']
+                    else:
+                        ybm_ID = ""
+                        
                     org_IDs.append(detected_list.loc[i, 'org_id'])
                     detected_entities.append(detected)
                     brand_IDs.append(brand_ID)
@@ -167,15 +166,15 @@ for i in range(len(detected_list)):
                 if brand_ID == brand_id:
                     if year in texts:
                         year_ID = year
+                        yb_ID = match_irregular2.loc[j, 'yb_id'] 
                     else:
                         year_ID = ""
+                        yb_ID = ""
 
                     if model_ID == model_id and brand_ID == brand_id and year_ID == year:
                         ybm_ID = match_irregular2.loc[j, 'ybm_id']
-                        yb_ID = match_irregular2.loc[j, 'yb_id']
                     else:
                         ybm_ID = ""
-                        yb_ID = ""
 
                     org_IDs.append(detected_list.loc[i, 'org_id'])
                     detected_entities.append(detected)
@@ -251,15 +250,14 @@ for i in range(len(detected_list)):
                 if brand_ID == brand_id:
                     if year in texts:
                         year_ID = year
-                    else:
-                        year_ID = ""
-
-                    if brand_ID == brand_id and model_ID == model_id and year_ID == year:
-                        ybm_ID = match_irregular3.loc[j, 'ybm_id']
                         yb_ID = match_irregular3.loc[j, 'yb_id']
                     else:
-                        ybm_ID = ""
+                        year_ID = ""
                         yb_ID = ""
+                    if brand_ID == brand_id and model_ID == model_id and year_ID == year:
+                        ybm_ID = match_irregular3.loc[j, 'ybm_id']
+                    else:
+                        ybm_ID = ""
 
                     org_IDs.append(detected_list.loc[i, 'org_id'])
                     detected_entities.append(detected)
