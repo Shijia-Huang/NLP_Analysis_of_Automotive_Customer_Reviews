@@ -32,7 +32,7 @@ The dataframe containing reviews and information: https://www.dropbox.com/s/gb3i
 
 Packages used: nltk, pandas, numpy, re, and [stanza](https://stanfordnlp.github.io/stanza/)  - We use the package with [4 named entity types](https://stanfordnlp.github.io/stanza/available_models.html), and supported types include PER (Person), LOC (Location), ORG (Organization) and MISC (Miscellaneous).
   
-The results were derived from [Vanderbilt Accre Virtual Machine](https://www.vanderbilt.edu/accre/documentation/python/#installing-additional-packages-with-virtual-environments). 
+The results were generated with the help of [Vanderbilt ACCRE Cluster Virtual Machine](https://www.vanderbilt.edu/accre/documentation/python/#installing-additional-packages-with-virtual-environments). 
 
 ## Conclusion
 Now we could use the resulted dataset to exam how many times a specific car model is mentioned. We will also determine how frequently two models are mentioned together. The lift between two brands/models may indicate their similarity or association as perceived by consumers.
