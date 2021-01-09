@@ -40,8 +40,9 @@ Then we create a dataframe containing all the detected entities that can be matc
 
 The dataframe containing reviews and information: https://www.dropbox.com/s/gb3i3deyb7swvvx/df_test_conf_lv.csv?dl=1
 
-Packages used: nltk, pandas, numpy, re, and [stanza](https://stanfordnlp.github.io/stanza/)  - We use the package with [4 named entity types](https://stanfordnlp.github.io/stanza/available_models.html) (package = conll03), and supported types include PER (Person), LOC (Location), ORG (Organization) and MISC (Miscellaneous).
+Packages used: nltk, pandas, numpy, re, and [stanza](https://stanfordnlp.github.io/stanza/)  - We use the package with [4 named entity types](https://stanfordnlp.github.io/stanza/available_models.html) (language code = en, package = conll03), and supported types include PER (Person), LOC (Location), ORG (Organization) and MISC (Miscellaneous).
 
+![results](images/4_class.png)
 
   
 The results were generated with the help of [Vanderbilt ACCRE Cluster Virtual Machine](https://www.vanderbilt.edu/accre/documentation/python/#installing-additional-packages-with-virtual-environments). 
