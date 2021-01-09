@@ -13,7 +13,7 @@ The code is to read through the dataset of car customer reviews, and filter out 
 
 The dataset we can be downloaded from https://www.dropbox.com/s/gb3i3deyb7swvvx/df_test_conf_lv.csv?dl=1, each line contains the information of one review sentence. 
 
-The code first use the python NLP package [stanza](https://stanfordnlp.github.io/stanza/) to perform a Named Entity Recognition process on the entire dataset, and generate a list of detected possible car brand/model names for each review sentence. (insert a pic here).
+The code first use the python NLP package [stanza](https://stanfordnlp.github.io/stanza/) to perform a Named Entity Recognition process on the entire dataset, and generate a list of detected possible car brand/model names for each review sentence.
 
 We compare the detected possible car brand/model names with the car brand/model names in a reference set of car information. (insert a pic here). Then we create a dataframe containing all the detected entities that can be matched with car brand/models in the reference set, which is all the mentioned car brand/models in the each review text. 
 
@@ -31,6 +31,8 @@ We compare the detected possible car brand/model names with the car brand/model 
 The dataframe containing reviews and information: https://www.dropbox.com/s/gb3i3deyb7swvvx/df_test_conf_lv.csv?dl=1
 
 Packages used: nltk, pandas, numpy, re, and [stanza](https://stanfordnlp.github.io/stanza/)  - We use the package with [4 named entity types](https://stanfordnlp.github.io/stanza/available_models.html), and supported types include PER (Person), LOC (Location), ORG (Organization) and MISC (Miscellaneous).
+
+![results](images/4_class.png)
   
 The results were generated with the help of [Vanderbilt ACCRE Cluster Virtual Machine](https://www.vanderbilt.edu/accre/documentation/python/#installing-additional-packages-with-virtual-environments). 
 
