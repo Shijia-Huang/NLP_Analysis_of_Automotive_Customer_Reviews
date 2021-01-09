@@ -24,7 +24,6 @@ detected_list = detected_list.reset_index()
 del (detected_list['index'])
 
 print('detected list length:',len(detected_list))
-detected_list.head()
 
 url = "https://www.dropbox.com/s/sxf35ebm71n3ho7/car%20model%20identifier.csv?dl=1"
 match = pd.read_csv(url)
