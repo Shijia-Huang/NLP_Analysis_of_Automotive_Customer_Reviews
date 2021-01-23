@@ -31,7 +31,32 @@ Then we create a dataframe containing all the detected entities that can be matc
 
 ![results](images/tagged.png)
 
-3. Based on the reference car information, check if each detected entity can be matched to any car brand/model names using [data_identifying_regular](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_identifying_regular.py) (for regular model names) and [data_identifying_irregular](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_identifying_irregular.py) (for irregular model names containing space, slash, or dash). If it could be matched, read the sentence that contains the entity, and check if there are more information in the sentence, such as the model names, or year of production. Merge the identified regular and irregular car brand/model names using [data_merging](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_merging.py), and save the information to a new datafram named "[entire_dataset_mentioned](https://drive.google.com/file/d/1vTykWcz3TLOzHUCXLnXRyKHdpf7aKpvK/view?usp=sharing)". The result would look like below: 
+3. Based on the [reference car information]("https://www.dropbox.com/s/sxf35ebm71n3ho7/car%20model%20identifier.csv?dl=1"), check if each detected entity can be matched to any car brand/model names using [data_identifying_regular](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_identifying_regular.py) (for regular model names) and [data_identifying_irregular](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_identifying_irregular.py) (for irregular model names containing a space, slash, or dash). 
+
+- After reading "[entire_dataset_tagged.csv](https://drive.google.com/file/d/1JMCRlcNrF-Hzg9-vz-IFVcgWuVzE4ykg/view?usp=sharing)", convert the contents in ['Entities'] from string to list because csv is a delimited text file, and we need to read the detected entities as a list.
+
+    #### in data_identifying_regular.py, we apply the following method:
+- If the identified entity can be matched with a brand name (whether it is regular or not, since the only irregular brand name are MERCEDES-BENZ and LAND ROVER) in the [reference dataframe]("https://www.dropbox.com/s/sxf35ebm71n3ho7/car%20model%20identifier.csv?dl=1"), save the detected entity into a new dataframd, and assign the brand_id to it.
+- For all the possible model names with this brand name, check if any of them is contained in the current review sentence. If yes, assign the model_id to the entity, if not, set its model_id to "". 
+- If the detected entity is itself a model name, we check if this model name is a unique one. If it is unique, we also save the entity to the new dataframe and assign the brand_id to this entity, otherwise we disregard it. 
+- For all the possible years of the brand, if the year is contained in the current review sentence, assign the year and the yb_id to the entity, if not, set the year and yb_id to "".
+- Until now, if we have the brand_id, model_id, and year of an entity, assign the ybm_ID to it, otherwise set its ybm_ID to "".
+- Notice that we only perform the iteration above if the identified entity is itself matched to a brand name or is a unique model name (an identified model name or year with missing brand should not exist).
+
+    #### in data_identifying_irregular.py, apply the following method:
+- If the detected entity can be matched with a model name with a space or a dash in the [reference dataframe]("https://www.dropbox.com/s/sxf35ebm71n3ho7/car%20model%20identifier.csv?dl=1"), such as "GRAND CHEROKEE" (as GRAND-CHEROKEE, GRAND, CHEROKEE, or GRAND_CHEROKEE) and "CR-V" (as CR, V, CRV, CR_V, CR V) assign the model_id to it without saving it to the dataframe. 
+- If the detected entity can be matched with either the first or the second model name divided by a slash in the [reference dataframe]("https://www.dropbox.com/s/sxf35ebm71n3ho7/car%20model%20identifier.csv?dl=1"), such as "G35/37" (as G35 or G37), assign the model_id to it. If the model is a unique model, directly save it to the new dataframe and assign the brand_id and model_id to it and skip the next two steps, otherwise just assign the model_id to it without saving it to the dataframe. **(Here it is different from the irregular model names with spaces and dashes, because if a model name separated by a slash such as "G35/37" is unique, then the detected entity which can be matched to this model name (either G35 or G37) is a unique model name, so it's okay to save it and assign the brand_id. While in the case of space or dash, even if a model name with space such as "RAM PICKUP" is a unique model name, a detected entity that can be matched to it, like "RAM", may not be a unique model name, so we still need to check if the brand name is mentioned in the sentence.)**
+
+- For the brand name that associated with the model name, if this brand name is contained by the review texts, assign the brand_id to this entity, otherwise set the brand_id to "".
+
+- We don't allow any identification without the brand_id, so we save an entity to a new dataframe only if its brand_id is not "". Do the following to such entities:
+
+- If the year associated with that brand name is in the review text, assign the year and the yb_id to the entity, else set the year and yb_id to "". 
+
+- Until now if we have the brand_id, model_id, and year, assign the ybm_id to the entity, otherwise assign the ybm_id to "".
+
+
+Merge the identified regular and irregular car brand/model names using [data_merging](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_merging.py), drop duplicates, and save the information to a new datafram named "[entire_dataset_mentioned](https://drive.google.com/file/d/1vTykWcz3TLOzHUCXLnXRyKHdpf7aKpvK/view?usp=sharing)". The result would look like below: 
 
 ![results](images/mentioned.png)
 
