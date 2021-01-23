@@ -31,7 +31,7 @@ Then we create a dataframe containing all the detected entities that can be matc
 
 ![results](images/tagged.png)
 
-3. Based on the [reference car information]("https://www.dropbox.com/s/sxf35ebm71n3ho7/car%20model%20identifier.csv?dl=1"), check if each detected entity can be matched to any car brand/model names using [data_identifying_regular](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_identifying_regular.py) (for regular model names) and [data_identifying_irregular](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_identifying_irregular.py) (for irregular model names containing a space, slash, or dash). 
+3. Based on the [reference car information]("https://www.dropbox.com/s/sxf35ebm71n3ho7/car%20model%20identifier.csv?dl=1"), check if each detected entity can be matched to any car brand/model names using [data_identifying_regular](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_identifying_regular.py) (for regular model names) and [data_identifying_irregular](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/data_identifying_irregular.py) (for irregular model names containing a space, slash, or dash): 
 
 - After reading "[entire_dataset_tagged.csv](https://drive.google.com/file/d/1JMCRlcNrF-Hzg9-vz-IFVcgWuVzE4ykg/view?usp=sharing)", convert the contents in ['Entities'] from string to list because csv is a delimited text file, and we need to read the detected entities as a list.
 
