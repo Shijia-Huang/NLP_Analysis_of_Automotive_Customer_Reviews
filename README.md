@@ -38,7 +38,7 @@ Then we create a dataframe containing all the detected entities that can be matc
     #### in data_identifying_regular.py, we apply the following rules:
 - If the identified entity can be matched with a brand name (whether it is regular or not, since the only irregular brand name are MERCEDES-BENZ and LAND ROVER) in the [reference dataframe]("https://www.dropbox.com/s/sxf35ebm71n3ho7/car%20model%20identifier.csv?dl=1"), save the detected entity into a new dataframd, and assign the brand_id to it.
 - For all the possible model names with this brand name, check if any of them is contained in the current review sentence. If yes, assign the model_id to the entity, if not, set its model_id to "". 
-- If the detected entity is itself a model name, we check if this model name is a unique one. If it is unique, we also save the entity to the new dataframe and assign the brand_id to this entity, otherwise we disregard it. 
+- If the detected entity is itself a model name, we check if this model name is a unique one. If it is unique, we also save the entity to the new dataframe and assign the brand_id and model_id to this entity, otherwise we disregard it. 
 - For all the possible years of the brand, if the year is contained in the current review sentence, assign the year and the yb_id to the entity, if not, set the year and yb_id to "".
 - Until now, if we have the brand_id, model_id, and year of an entity, assign the ybm_ID to it, otherwise set its ybm_ID to "".
 - Notice that we only perform the iteration above if the identified entity is itself matched to a brand name or is a unique model name (an identified model name or year with missing brand should not exist).
