@@ -60,6 +60,7 @@ Merge the identified regular and irregular car brand/model names using [data_mer
 
 ![results](images/mentioned.png)
 
+4. We now count how many times a pair of brand/model names are mentioned together in a single review using 
 
 ### Required Packages and Resources
 
