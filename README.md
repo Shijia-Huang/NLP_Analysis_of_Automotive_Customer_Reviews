@@ -60,7 +60,17 @@ Merge the identified regular and irregular car brand/model names using [data_mer
 
 ![results](images/mentioned.png)
 
-4. We now count how many times a pair of brand/model names are mentioned together in a single review using 
+4. We now count how many times a pair of brand/model names are mentioned together in a single review using [lift_calculating](https://github.com/ScarlettHuang1/Analysis_On_Customer_Reviews-/blob/main/lift_calculating/lift_calculating.ipynb). In this file, we try to capture how often is a pair of brand names (respectfully model names) are co-mentioned. 
+-- We first create a squared matrix containing all the brand names(respectfully model names) as its row and column names. Each cell of the matrix is an integer (intiated as zero) representing the times that the two brand(model) names are detected in that review. We then concact this matrix to the entire_dataset_mentioned in the last step. We also add another column to this matrix called "cur_brand_id"("cur_model_id") to represent which brand(model) is this review for. 
+-- Then we loop through all rows of the entire dataframe. For each sentence(each line), if an entity is detected in it, we add 1 to the cell representing this brand. We also add 1 to the cell that representing the current brand which the review is for. Then group the dataframe by review ID(org_id) and drop the unnecessary information. The resulted matrix then tells us in each review, how many times a brand name(model name) is mentioned. 
+
+![results](images/count.png)
+
+-- We then Now we define a function using dictionary to calculate the lift between any pair of brand names(model names). In each row, if the count value for any two brand names (model names) are both not zero, we add (brand1, brand2) = 1 to the dictionary, meaning that we captured the information that this pair (brand1, brand2) is co-mentioned once (if a pair of brand names (model names) are actually co-mentioned multiple times within a single review, we only count it once, because if a person compares a pair of brands(models) in one review, the times that he co-mentiones the brand names(model names) in that review are not siginificant. 
+
+-- Before we pass the matrix to the dictionary function, we replace all the values larger than 1 with 1 (for the reason discussed in the previous step). Now the function "lift_calculator" would tell us how often are two names mentioned together in the entire review dataset. We rely on the lift of the brand names (lift is calculated by (the times that brand1 and brand2 are mentioned together)/(the times that brand1 is mentioned * the times that brand2 is mentioned) to represent the proximity of a pair of brand names.  
+
+![results](images/lift.png)
 
 ### Required Packages and Resources
 
